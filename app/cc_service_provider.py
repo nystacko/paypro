@@ -22,7 +22,7 @@ def authorize(cc_json_data):
 	
 	# Convert the JSON data to a Python dict
     cc_dict = make_dict(cc_json_data)
-    trans_amount = int(cc_dict.get('trans_amount'))
+    trans_amount = float(cc_dict.get('trans_amount'))
     approval = ''
 
     # Hard code a maximum ammount for transaction approval
