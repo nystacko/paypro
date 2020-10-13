@@ -8,9 +8,9 @@ POSTs the data to the server in JSON format. The server responds with a
 message similar to a credit card authorization, also in JSON format.
 
 # Requirements
-Flask
-Flask-WTF
-WTForms
+* Flask
+* Flask-WTF
+* WTForms
 
 # Running the application
 Open a terminal session.
