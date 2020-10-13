@@ -1,0 +1,54 @@
+<!--
+***********************************
+Author: Steven Stackle
+Assignment #2, ICT-4310, Autumn 2020, Instructor: Michael Schwartz
+Last Revision: October 10, 2020
+
+Description: This Python program demonstrates communication between a 
+client and server over HTTP. It uses the Flask framework to start a server on 
+the local machine and generate web pages. On the client side, the cardholder 
+fills out a payment form. When the cardholder submits the form, the client 
+POSTs the data to the server in JSON format. The server responds with a 
+message similar to a credit card authorization, also in JSON format.
+************************************
+-->
+
+<!-- This is the core page the other pages are built from -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ICT-4310 Payment Processor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo">ICT-4310 PAYMENT PROCESSOR</h1>
+            <strong>
+                <nav>
+                    <ul class="menu">
+                        <li><a href="{{ url_for('home') }}">Home</a></li>
+                        <li><a href="{{ url_for('payments') }}">Payments</a></li>
+                    </ul>
+                </nav>
+            </strong>
+        </div>
+    </header>
+    <div class="container">
+        {% block content %}{% endblock %}
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+    </div>
+</body>
+
+</html>

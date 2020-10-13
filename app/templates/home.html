@@ -1,0 +1,24 @@
+<!--
+***********************************
+Author: Steven Stackle
+Assignment #2, ICT-4310, Autumn 2020, Instructor: Michael Schwartz
+Last Revision: October 10, 2020
+
+Description: This Python program demonstrates communication between a 
+client and server over HTTP. It uses the Flask framework to start a server on 
+the local machine and generate web pages. On the client side, the cardholder 
+fills out a payment form. When the cardholder submits the form, the client 
+POSTs the data to the server in JSON format. The server responds with a 
+message similar to a credit card authorization, also in JSON format.
+************************************
+-->
+
+{% extends "layout.html" %}
+{% block content %}
+<div class="home">
+    <p>A project by Steve Stackle</p>
+    <p>Fall Quarter 2020</p>
+    <h2>Welcome to the Payment Processing System</h2>
+    <p class="center">Click on 'Payments' to make a payment.</p>
+</div>
+{% endblock %}
