@@ -1,8 +1,8 @@
 <!--
 ***********************************
 Author: Steven Stackle
-Assignment #2, ICT-4310, Autumn 2020, Instructor: Michael Schwartz
-Last Revision: October 10, 2020
+Assignment #4, ICT-4310, Autumn 2020, Instructor: Michael Schwartz
+Last Revision: November 7, 2020
 
 Description: This template file contains static HTML and dynamic data  from
 the Flask Python web framework to render the application in the user's browser.  
@@ -20,8 +20,11 @@ message similar to a credit card authorization, also in JSON format.
 
 {% extends "layout.html" %}
 {% block content %}
-<div class="payments">
+<div class="home">
+    <p>A project by Steve Stackle</p>
     <h2>Make a Payment</h2>
+</div>
+<div class="payments">
     <form action="" method="post" novalidate>
         {{ form.hidden_tag() }}
         <p>
@@ -38,10 +41,17 @@ message similar to a credit card authorization, also in JSON format.
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
+		<p>
+            {{ form.exp_month.label }}<br>
+            {{ form.exp_month(size=2) }}<br>
+            {% for error in form.exp_month.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
         <p>
-            {{ form.exp_date.label }}<br>
-            {{ form.exp_date(size=4) }}<br>
-            {% for error in form.exp_date.errors %}
+            {{ form.exp_year.label }}<br>
+            {{ form.exp_year(size=4) }}<br>
+            {% for error in form.exp_year.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>

@@ -1,3 +1,15 @@
+/*************************************/
+/* Author: Steven Stackle                     */
+/* Assignment #4, ICT-4310, Autumn 2020, Instructor: Michael Schwartz  */
+/* Last Revision: November 7, 2020                      */
+/*                                                        */
+/* Description: The Paypro application demonstrates communication between a */
+/* client and server over HTTP. */
+/*                                                        */
+/* This CSS file styles the dynamic web pages.                       */          
+/* *************************************/
+
+
 body {
     margin: 0;
     padding: 0;
@@ -44,7 +56,7 @@ header h1.logo:hover {
 }
 
 div.home {
-    padding: 10px 0 30px 0;
+    padding: 10px 0 10px 0;
     background-color: #E6E6FA;
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
@@ -95,6 +107,16 @@ h3 {
 
 .center {
     text-align: center;
+}
+
+.trans_table table, th, td{
+    border: 1px solid gray;
+    border-collapse: collapse;
+    font-size: smaller;
+}
+
+.trans_table th{
+    font-weight: bolder;
 }
 
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */

@@ -1,0 +1,96 @@
+"""
+***********************************
+Author: Steven Stackle
+Assignment #4, ICT-4310, Autumn 2020, Instructor: Michael Schwartz
+Last Revision: November 5, 2020
+
+Description: This Python program demonstrates communication between a 
+client and server over HTTP. It uses the Flask framework to start a server on 
+the local machine and generate web pages. On the client side, the cardholder 
+fills out a payment form. When the cardholder submits the form, the client 
+POSTs the data to the server in JSON format. The server responds with a 
+message similar to a credit card authorization, also in JSON format.
+
+The validation functions and cc_dictionary in this module are used from or 
+adapted from code written by Professor Michael Schwartz, University of Denver 
+ICT-4310, Autumn 2020.
+************************************
+"""
+
+import re
+from flask_wtf import FlaskForm
+from wtforms import StringField, DecimalField, SubmitField
+from wtforms.validators import DataRequired, Regexp, NumberRange, ValidationError
+import datetime
+
+# A dictionary of regular expressions representing valid credit cards from 
+#   several credit card networks
+cc_dictionary = {
+    'visa': r'^4[0-9]{12}(?:[0-9]{3})?$',
+    'mastercard': r'^5[1-5][0-9]{14}$|^2(?:2(?:2[1-9]|[3-9][0-9])|[3-6][0-9][0-9]|7(?:[01][0-9]|20))[0-9]{12}$',
+    'amex': r'^3[47][0-9]{13}$',
+    'discover': r'^65[4-9][0-9]{13}|64[4-9][0-9]{13}|6011[0-9]{12}|(622(?:12[6-9]|1[3-9][0-9]|[2-8][0-9][0-9]|9[01][0-9]|92[0-5])[0-9]{10})$',
+    'diners_club': r'^3(?:0[0-5]|[68][0-9])[0-9]{11}$',
+    'jcb': r'^(?:2131|1800|35[0-9]{3})[0-9]{11}$'
+}
+
+def is_accepted_credit_card(credit_card_string):
+    """ Returns credit card vendor info, or False if card is invalid """
+    credit_card = re.sub(r'[\D]', '', credit_card_string)
+    for key, value in cc_dictionary.items():
+        if re.fullmatch(value, credit_card):
+            return key
+    return False
+
+def validate_card(credit_card, cvv, result_list=False):
+    """
+    Returns False if card or cvv are invalid length or format;
+    returns True or components for test if result_list=True
+    """
+    card_type = is_accepted_credit_card(credit_card)
+    valid = verify_luhn(credit_card)
+    cvv = validate_cvv(credit_card, cvv)
+    ## print("Type: ", card_type, " Luhn: ", valid, " cvv", cvv)
+    if result_list:
+        return (card_type and valid and cvv, card_type, valid, cvv)
+    return card_type and valid and cvv
+
+def verify_luhn(credit_card_string, debug=False):
+    """Verify via Luhn algorithm whether a credit card number has a valid last
+       digit. """
+    # credit_card_string = field.data
+    credit_card = re.sub(r'[\D]', '', credit_card_string)
+    digit_sum = 0
+    cc_parity = len(credit_card) % 2
+    for i in range(len(credit_card)-1, -1, -1):
+        j = int(credit_card[i])
+        if (i + 1) % 2 != cc_parity:
+            j = j * 2
+            if j > 9:
+                j = j - 9
+        digit_sum = digit_sum + j
+    if debug:
+        return digit_sum % 10 == 0, "check sum computed = " + str(digit_sum)
+    return digit_sum % 10 == 0
+
+def validate_date(exp_month, exp_year, max_future_year=5):
+    """Return true if month/year are greater than current month/exp_year
+       and exp_year is less than 5 years in the future
+    """
+    today = datetime.date.today()
+    expires = datetime.date(int(exp_year), int(exp_month), 28)
+    return expires > today and int(exp_year) - today.year < max_future_year
+
+def validate_cvv(credit_card_string, cvv):
+    """Return true if the length of the CVV is correct for the card. False otherwise"""
+    ## card_number = form.card_number.data
+    ## cvv = form.cvv.data
+    credit_card = re.sub(r'[\D]', '', credit_card_string)
+    card_type = is_accepted_credit_card(credit_card)
+    if card_type == "amex":
+        return len(str(cvv)) == 4
+
+    if card_type:
+        return len(str(cvv)) == 3
+
+    return False

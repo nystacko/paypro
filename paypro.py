@@ -1,7 +1,7 @@
 """
 ***********************************
 Author: Steven Stackle
-Assignment #2, ICT-4310, Autumn 2020, Instructor: Michael Schwartz
+Assignment #4, ICT-4310, Autumn 2020, Instructor: Michael Schwartz
 Last Revision: October 10, 2020
 
 Description: This Python program demonstrates communication between a 

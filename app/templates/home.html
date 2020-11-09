@@ -1,8 +1,8 @@
 <!--
 ***********************************
 Author: Steven Stackle
-Assignment #2, ICT-4310, Autumn 2020, Instructor: Michael Schwartz
-Last Revision: October 10, 2020
+Assignment #4, ICT-4310, Autumn 2020, Instructor: Michael Schwartz
+Last Revision: November 7, 2020
 
 Description: This template file contains static HTML and dynamic data  from
 the Flask Python web framework to render the application in the user's browser.  
@@ -16,14 +16,18 @@ message similar to a credit card authorization, also in JSON format.
 ************************************
 -->
 
-<!-- This builds the dynamic home page. -->
+<!-- This builds the home page. -->
 
 {% extends "layout.html" %}
 {% block content %}
 <div class="home">
-    <p>A project by Steve Stackle</p>
-    <p>Fall Quarter 2020</p>
     <h2>Welcome to the Payment Processing System</h2>
-    <p class="center">Click on 'Payments' to make a payment.</p>
+    <p>A project by Steve Stackle</p>
+    <p>University of Denver University College</p>
+    <p>Information and Communications Technology Program</p>
+    <p>Faculty: Michael Schwartz, MS</p>
+    <p>Autumn Quarter 2020</p>
+    <h5 class="center">Click on 'Payments' to make a payment.</h5>
+    <h5 class="center">Click on 'Settle Transactions' to see a list of transactions.</h5>
 </div>
 {% endblock %}

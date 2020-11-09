@@ -1,8 +1,8 @@
 <!--
 ***********************************
 Author: Steven Stackle
-Assignment #2, ICT-4310, Autumn 2020, Instructor: Michael Schwartz
-Last Revision: October 10, 2020
+Assignment #4, ICT-4310, Autumn 2020, Instructor: Michael Schwartz
+Last Revision: November 7, 2020
 
 Description: This template file contains static HTML and dynamic data  from
 the Flask Python web framework to render the application in the user's browser.  
@@ -34,7 +34,8 @@ message similar to a credit card authorization, also in JSON format.
                 <nav>
                     <ul class="menu">
                         <li><a href="{{ url_for('home') }}">Home</a></li>
-                        <li><a href="{{ url_for('payments') }}">Payments</a></li>
+                        <li><a href="{{ url_for('payment') }}">Make a Payment</a></li>
+						<li><a href="{{ url_for('trans_list') }}">Settle Transactions</a></li>
                     </ul>
                 </nav>
             </strong>

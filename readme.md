@@ -20,4 +20,6 @@ Export the flask environment variable:
     Other operating systems: export FLASK_APP= paypro.py
 Execute the Flask command: flask run
 Open a web browser and navigate to: http://localhost:5000/ or http://127.0.0.1:5000
-To enter a card transaction, click on the ‘Transaction’ menu and fill out the form fields.
+To enter a card transaction, click 'Make a Payment' and fill out the form fields.
+
+To see a list of all card transactions, click 'Settle Transactions.'
