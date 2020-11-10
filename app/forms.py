@@ -18,10 +18,11 @@ ICT-4310, Autumn 2020
 """
 
 import re
+import datetime
 from flask_wtf import FlaskForm
 from wtforms import StringField, DecimalField, SubmitField
 from wtforms.validators import DataRequired, Regexp, NumberRange, ValidationError
-import datetime
+
 
 # A dictionary of regular expressions representing valid credit cards from 
 #   several credit card networks
