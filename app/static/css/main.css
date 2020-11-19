@@ -1,12 +1,16 @@
 /*************************************/
-/* Author: Steven Stackle                     */
-/* Assignment #4, ICT-4310, Autumn 2020, Instructor: Michael Schwartz  */
-/* Last Revision: November 7, 2020                      */
-/*                                                        */
-/* Description: The Paypro application demonstrates communication between a */
-/* client and server over HTTP. */
-/*                                                        */
-/* This CSS file styles the dynamic web pages.                       */          
+/* Author: Steven Stackle                     
+/* Assignment #5, ICT-4310, Autumn 2020, Instructor: Michael Schwartz  
+/* Last Revision: November 7, 2020                      
+/*                                                        
+/* Description: The Paypro application demonstrates communication between a 
+/* client and server over HTTP. 
+/* 
+/* The input form coding in this application is based on  
+/* *The Flask Mega-Tutorial Part III: Web Form* by Miguel Grinberg.
+/* https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iii-web-forms
+/*                                                        
+/* This CSS file styles the dynamic web pages.                               
 /* *************************************/
 
 
